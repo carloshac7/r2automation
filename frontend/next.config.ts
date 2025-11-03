@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // TODO: Configuraciones adicionales para optimizaciones, imágenes, etc.
 };
 
 export default nextConfig;
