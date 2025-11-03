@@ -23,7 +23,7 @@ export function DemoSection() {
         >
           {/* TODO: Reemplazar con tu propio GIF o video de demo */}
           <Image
-            src="/flow-gif.mp4"
+            src="/flow-gif.gif"
             alt="Demo de flujo de automatización"
             width={1200}
             height={800}
