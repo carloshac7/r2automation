@@ -43,7 +43,7 @@ export function Hero() {
         >
           {/* TODO: Reemplazar con tu propia ilustración o imagen */}
           <Image
-            src="/hero-illustration.svg"
+            src="/hero-illustration.webp"
             alt="Ilustración de flujo de automatización"
             width={800}
             height={600}
