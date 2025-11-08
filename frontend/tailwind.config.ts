@@ -1,20 +1,40 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "#0a0f1a",
-        text: "#f5f7fa",
-        accent: "#00d1ff",
+        // Colores personalizados para tu proyecto
+        background: '#ffffff',      // Fondo blanco
+        foreground: '#000000',      // Texto negro
+        accent: {
+          DEFAULT: '#06b6d4',       // Celeste/Turquesa (cyan-500)
+          light: '#22d3ee',         // Celeste claro (cyan-400)
+          dark: '#0891b2',          // Celeste oscuro (cyan-600)
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
     },
   },
   plugins: [],
-};
-export default config;
+}
