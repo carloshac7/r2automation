@@ -7,7 +7,7 @@ export function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
   
   // TODO: Reemplazar con tu número de WhatsApp (formato internacional sin + ni espacios)
-  const whatsappNumber = "56912345678"; // Ejemplo: Chile
+  const whatsappNumber = "51906826757"; // Ejemplo: Chile
   const message = encodeURIComponent("Hola! Me interesa conocer más sobre sus servicios de automatización.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
