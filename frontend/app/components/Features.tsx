@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    title: "Flujos Visuales",
-    description: "Arrastra y conecta nodos para crear automatizaciones complejas sin código.",
+    title: "Toma de decisiones inteligente",
+    description: "Ejecuta tareas como: calificar clientes potenciales, establecer citas y resolver problemas de forma autónoma.",
   },
   {
-    title: "Integraciones Fáciles",
-    description: "Conecta con APIs, bases de datos y servicios populares en minutos.",
+    title: "Atiende a clientes en todas partes",
+    description: "Funciona de manera uniforme y uniforme en plataformas web, de voz y de mensajería.",
   },
   {
-    title: "Escalable y Seguro",
-    description: "Diseñado para equipos, con control de accesos y deployment en la nube.",
+    title: "Integración perfecta",
+    description: "Conéctese a sus herramientas de negocio para proporcionar a su agente virtual los datos necesarios.",
   },
   // TODO: Agregar más features si es necesario
 ];
