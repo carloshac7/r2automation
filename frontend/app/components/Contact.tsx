@@ -15,12 +15,8 @@ export function Contact() {
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = () => {
-    if (!formData.name || !formData.email || !formData.service || !formData.message) {
-      alert("Por favor completa todos los campos requeridos");
-      return;
-    }
-    
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setStatus("sending");
     
     // Simulación de envío - Aquí integrarías con tu backend o servicio de email
@@ -64,7 +60,7 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -75,6 +71,7 @@ export function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
                     placeholder="Tu nombre"
                   />
@@ -104,6 +101,7 @@ export function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
                     placeholder="tu@email.com"
                   />
@@ -118,7 +116,7 @@ export function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
-                    placeholder="+56 9 1234 5678"
+                    placeholder="+51 912 435 778"
                   />
                 </div>
               </div>
@@ -131,6 +129,7 @@ export function Contact() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all bg-white"
                 >
                   <option value="">Selecciona un servicio</option>
@@ -154,6 +153,7 @@ export function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="Cuéntanos sobre tu proyecto y qué necesitas automatizar..."
@@ -161,7 +161,7 @@ export function Contact() {
               </div>
 
               <button
-                onClick={handleSubmit}
+                type="submit"
                 disabled={status === "sending"}
                 className="w-full bg-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
@@ -182,7 +182,7 @@ export function Contact() {
                   ¡Gracias! Te responderemos en menos de 24 horas.
                 </p>
               )}
-            </div>
+            </form>
           </motion.div>
 
           {/* Contact Info */}
@@ -217,8 +217,8 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">WhatsApp</p>
-                    <a href="https://wa.me/56912345678" className="text-cyan-600 hover:text-cyan-700">
-                      +56 9 1234 5678
+                    <a href="https://wa.me/51912435778" className="text-cyan-600 hover:text-cyan-700">
+                      +51 912 435 778
                     </a>
                   </div>
                 </div>
@@ -256,7 +256,7 @@ export function Contact() {
                 te daremos una propuesta personalizada con ROI estimado.
               </p>
               <a
-                href="https://calendly.com/r2automate"
+                href="https://calendar.app.google/f5atD5xruvegwAYm7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-white text-cyan-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"

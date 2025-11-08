@@ -9,7 +9,7 @@ export function WhatsAppButton() {
   const [message, setMessage] = useState("");
   
   // Número de WhatsApp (cambiar por tu número real)
-  const phoneNumber = "51906826757"; // Formato: código país + número sin +
+  const phoneNumber = "51912435778"; // Formato: código país + número sin +
   
   const handleSendMessage = () => {
     const text = message || "Hola, me gustaría obtener más información sobre sus servicios de automatización.";
