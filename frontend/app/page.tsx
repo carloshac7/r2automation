@@ -1,14 +1,27 @@
-import { Hero } from "./components/Hero";
-import { Features } from "./components/Features";
-import { DemoSection } from "./components/DemoSection";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Services } from "@/components/Services";
+import { UseCases } from "@/components/UseCases";
+import { Process } from "@/components/Process";
+import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <>
+    <main className="bg-white">
+      <Header />
       <Hero />
-      <Features />
-      <DemoSection />
-      {/* TODO: Agregar más secciones si es necesario, como Testimonials o Pricing */}
-    </>
+      <Services />
+      <UseCases />
+      <Process />
+      <Testimonials />
+      <FAQ />
+      <Contact />
+      <Footer />
+      <WhatsAppButton />
+    </main>
   );
 }
