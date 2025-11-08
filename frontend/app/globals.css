@@ -2,16 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Paleta de colores oscura y futurista */
+/* Tema claro moderno */
 :root {
-  --background: #f5f7fa;
-  --text: #f5f7fa;
-  --accent: #00d1ff;
+  --background: #ffffff;      /* Fondo blanco puro */
+  --text: #111827;            /* Negro suave (mejor legibilidad) */
+  --text-muted: #4b5563;      /* Gris para subtítulos */
+  --accent: #00d1ff;          /* Turquesa principal */
+  --accent-hover: #00b8e6;    /* Turquesa más oscuro */
+  --border: #e5e7eb;          /* Gris claro para líneas */
+  --card-bg: #f9fafb;         /* Fondo sutil para secciones */
 }
 
+/* Estilos globales */
 body {
   background-color: var(--background);
   color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
-/* TODO: Agregar más estilos globales si es necesario, como para botones o tipografía */
+/* Botones */
+.btn-primary {
+  @apply inline-block font-semibold rounded-full px-6 py-3 transition-all duration-200;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 209, 255, 0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0,184,230,0.25);
+}
+
+.btn-outline {
+  @apply inline-block font-semibold rounded-full px-6 py-3 transition-all duration-200;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* Secciones */
+section {
+  background-color: var(--background);
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: var(--text);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}

@@ -9,7 +9,7 @@ export function Footer() {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="bg-background border-t border-accent/10 py-8"
+      className="bg-white border-t border-gray-200 py-8 text-gray-600"
     >
       <div className="container mx-auto px-6 text-center">
         <p className="mb-4">&copy; 2025 R2Automate. Todos los derechos reservados.</p>

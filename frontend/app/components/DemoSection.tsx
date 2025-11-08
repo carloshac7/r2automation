@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function DemoSection() {
   return (
-    <section id="demo" className="py-20 bg-accent/5">
+    <section id="features" className="py-20 bg-card-bg">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
