@@ -15,7 +15,7 @@ export function Header() {
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/">
           {/* TODO: Reemplazar logo con tu propio SVG o imagen */}
-          <Image src="/logo.png" alt="R2Automate Logo" width={150} height={40} />
+          <Image src="/logo.svg" alt="R2Automate Logo" width={150} height={40} />
         </Link>
         <ul className="flex space-x-6">
           <li><Link href="#features" className="hover:text-accent transition-colors">Características</Link></li>
