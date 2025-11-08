@@ -1,118 +1,152 @@
 'use client';
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Carlos Rodríguez",
-    role: "CEO, TechStart SPA",
-    company: "TechStart",
-    content: "Implementaron un chatbot con IA que maneja el 80% de nuestras consultas. Ahorramos 15 horas semanales y nuestros clientes están más satisfechos con la atención 24/7.",
+    name: "Carlos Mendoza",
+    position: "Director Comercial",
+    company: "TechSolutions Chile",
+    image: "👨‍💼",
     rating: 5,
-    image: "/testimonial-1.jpg",
+    text: "R2Automate transformó completamente nuestra operación de ventas. El chatbot que desarrollaron califica leads automáticamente y nuestro equipo ahora se enfoca solo en oportunidades reales. Aumentamos conversiones en 35%.",
+    highlight: "+35% conversión"
   },
   {
-    name: "María González",
-    role: "Directora de Ventas, InmoPlus",
-    company: "InmoPlus",
-    content: "La automatización de leads con Kommo transformó nuestro proceso de ventas. Ahora capturamos y calificamos leads automáticamente desde múltiples fuentes. Triplicamos nuestra conversión.",
+    name: "María Fernanda Silva",
+    position: "CEO",
+    company: "PropiedadesPlus",
+    image: "👩‍💼",
     rating: 5,
-    image: "/testimonial-2.jpg",
+    text: "Necesitábamos automatizar la extracción de datos de portales inmobiliarios. El sistema de web scraping que crearon es increíble - ahorra 30 horas semanales de trabajo manual y los datos son perfectos.",
+    highlight: "30h ahorradas/semana"
   },
   {
-    name: "Pedro Sánchez",
-    role: "Gerente de Marketing, E-Commerce Pro",
-    company: "E-Commerce Pro",
-    content: "El sistema de web scraping que desarrollaron nos permite monitorear precios de la competencia en tiempo real. Tomamos decisiones más rápidas y mantenemos ventaja competitiva.",
+    name: "Roberto Gonzalez",
+    position: "Gerente de Operaciones",
+    company: "E-commerce Global",
+    image: "👨‍💻",
     rating: 5,
-    image: "/testimonial-3.jpg",
+    text: "La automatización con n8n que implementaron sincroniza nuestro inventario entre 5 plataformas en tiempo real. Ya no perdemos ventas por productos sin stock. ROI en menos de 2 meses.",
+    highlight: "ROI en 2 meses"
   },
+  {
+    name: "Ana Martínez",
+    position: "Directora de Marketing",
+    company: "Consultora SM",
+    image: "👩‍💼",
+    rating: 5,
+    text: "El equipo de R2Automate es excepcional. Desarrollaron una solución personalizada que integra nuestro CRM Kommo con todas nuestras campañas. La visibilidad y control que tenemos ahora es impresionante.",
+    highlight: "100% integrado"
+  },
+  {
+    name: "Luis Paredes",
+    position: "Founder",
+    company: "StartupLab",
+    image: "👨‍🚀",
+    rating: 5,
+    text: "Como startup necesitábamos escalar rápido sin contratar más personal. Las automatizaciones y APIs que construyeron nos permiten operar como una empresa 10 veces más grande. Altamente recomendados.",
+    highlight: "10x productividad"
+  },
+  {
+    name: "Patricia Rojas",
+    position: "Directora de TI",
+    company: "Servicios Corporativos",
+    image: "👩‍💼",
+    rating: 5,
+    text: "Buscábamos un partner técnico confiable para automatización y lo encontramos. Su conocimiento de Python, APIs y herramientas como Streamlit es de primer nivel. Proyectos entregados a tiempo siempre.",
+    highlight: "Siempre a tiempo"
+  }
 ];
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="py-20 bg-gradient-to-b from-cyan-50 to-white">
+    <section className="py-20 bg-gradient-to-b from-white to-cyan-50">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Lo que dicen nuestros clientes
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Lo que Dicen Nuestros Clientes
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Empresas que ya transformaron sus procesos con nuestras soluciones
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Empresas que confiaron en nosotros y transformaron sus procesos
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-gray-100"
+              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 relative"
             >
-              {/* Estrellas */}
+              {/* Quote Icon */}
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-cyan-200" />
+
+              {/* Rating */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-5 h-5 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
 
-              {/* Contenido */}
-              <p className="text-gray-700 leading-relaxed mb-6 italic">
-                "{testimonial.content}"
+              {/* Testimonial Text */}
+              <p className="text-gray-700 mb-6 leading-relaxed italic">
+                "{testimonial.text}"
               </p>
 
-              {/* Autor */}
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-gray-200">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
-                  />
+              {/* Highlight Badge */}
+              <div className="mb-4">
+                <span className="inline-block bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-semibold">
+                  ✨ {testimonial.highlight}
+                </span>
+              </div>
+
+              {/* Author Info */}
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                <div className="text-4xl">
+                  {testimonial.image}
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <p className="font-bold text-gray-900">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {testimonial.position}
+                  </p>
+                  <p className="text-sm text-cyan-600 font-semibold">
+                    {testimonial.company}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12"
         >
-          <p className="text-gray-700 text-lg mb-6">
-            Únete a las empresas que ya están automatizando con éxito
+          <p className="text-lg text-gray-600 mb-6">
+            ¿Quieres ser nuestro próximo caso de éxito?
           </p>
           <a
             href="#contacto"
-            className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg hover:bg-cyan-600 transition-all hover:shadow-xl font-semibold"
+            className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-xl"
           >
-            Solicita tu Consulta Gratuita
+            Comienza Tu Transformación
           </a>
         </motion.div>
       </div>

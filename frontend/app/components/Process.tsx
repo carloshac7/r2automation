@@ -1,38 +1,49 @@
 'use client';
 
 import { motion } from "framer-motion";
+import { MessageCircle, Target, Code, Rocket, LineChart } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    title: "Consulta Inicial",
-    description: "Entendemos tus necesidades, procesos actuales y objetivos de negocio en una llamada sin compromiso.",
-    icon: "💬",
+    icon: MessageCircle,
+    title: "Consultoría Inicial",
+    description: "Analizamos tus necesidades, procesos actuales y objetivos. Identificamos oportunidades de automatización y creamos una propuesta personalizada.",
+    duration: "1-2 días",
+    color: "from-cyan-400 to-cyan-500"
   },
   {
     number: "02",
-    title: "Análisis y Propuesta",
-    description: "Evaluamos tu caso y diseñamos una solución personalizada con tiempos y costos claros.",
-    icon: "📋",
+    icon: Target,
+    title: "Planificación & Diseño",
+    description: "Diseñamos la arquitectura de la solución, definimos flujos de trabajo, integraciones necesarias y entregables. Te presentamos un roadmap claro.",
+    duration: "2-3 días",
+    color: "from-cyan-500 to-cyan-600"
   },
   {
     number: "03",
-    title: "Desarrollo",
-    description: "Construimos la solución con actualizaciones constantes y demos durante el proceso.",
-    icon: "⚙️",
+    icon: Code,
+    title: "Desarrollo & Implementación",
+    description: "Construimos tu solución utilizando las mejores herramientas: n8n, Python, APIs, chatbots IA. Desarrollo ágil con actualizaciones constantes.",
+    duration: "1-4 semanas",
+    color: "from-cyan-600 to-blue-500"
   },
   {
     number: "04",
-    title: "Implementación",
-    description: "Desplegamos la solución en tu entorno y capacitamos a tu equipo para su uso óptimo.",
-    icon: "🚀",
+    icon: Rocket,
+    title: "Pruebas & Despliegue",
+    description: "Realizamos pruebas exhaustivas, ajustes finales y lanzamos tu solución. Capacitamos a tu equipo para el uso correcto de las herramientas.",
+    duration: "3-5 días",
+    color: "from-blue-500 to-blue-600"
   },
   {
     number: "05",
-    title: "Soporte Continuo",
-    description: "Ofrecemos mantenimiento, actualizaciones y soporte técnico para garantizar el funcionamiento.",
-    icon: "🛠️",
-  },
+    icon: LineChart,
+    title: "Soporte & Optimización",
+    description: "Monitoreamos el rendimiento, realizamos ajustes y mejoras continuas. Soporte técnico incluido para garantizar tu éxito a largo plazo.",
+    duration: "Continuo",
+    color: "from-blue-600 to-indigo-600"
+  }
 ];
 
 export function Process() {
@@ -42,81 +53,87 @@ export function Process() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Nuestro Proceso
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Metodología probada para entregar soluciones de calidad
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Metodología probada para implementar soluciones de automatización exitosas
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Línea vertical conectora (solo visible en desktop) */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-cyan-200 h-full"></div>
-
-          <div className="space-y-12">
-            {steps.map((step, index) => (
+        <div className="max-w-5xl mx-auto">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`flex flex-col lg:flex-row items-center gap-8 ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                }`}
+                className="relative mb-12 last:mb-0"
               >
-                {/* Contenido */}
-                <div className={`lg:w-5/12 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                  <div className="bg-white p-6 rounded-xl border-2 border-gray-200 hover:border-cyan-400 hover:shadow-xl transition-all">
-                    <div className="text-4xl mb-3">{step.icon}</div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed">
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  {/* Number & Icon */}
+                  <div className="flex-shrink-0">
+                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg`}>
+                      <Icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="mt-3 text-center">
+                      <span className="text-sm font-bold text-gray-400">
+                        {step.number}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {step.title}
+                      </h3>
+                      <span className="inline-block mt-2 md:mt-0 bg-cyan-100 text-cyan-700 px-4 py-1 rounded-full text-sm font-semibold">
+                        ⏱ {step.duration}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Número central */}
-                <div className="lg:w-2/12 flex justify-center">
-                  <div className="relative z-10 w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-xl">
-                      {step.number}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Espacio vacío */}
-                <div className="hidden lg:block lg:w-5/12"></div>
+                {/* Connector Line */}
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute left-10 top-24 w-0.5 h-16 bg-gradient-to-b from-cyan-300 to-transparent" />
+                )}
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mt-16 bg-gradient-to-r from-cyan-50 to-blue-50 p-8 rounded-2xl"
+          className="mt-16 bg-gradient-to-br from-cyan-50 to-blue-50 p-8 md:p-12 rounded-2xl border border-cyan-200 text-center"
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            ¿Listo para comenzar?
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            ¿Listo para Comenzar?
           </h3>
-          <p className="text-gray-700 mb-6 max-w-xl mx-auto">
-            Agenda una consulta gratuita y descubre cómo podemos ayudarte
+          <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+            Agenda una consultoría gratuita de 30 minutos y descubre cómo podemos
+            automatizar tus procesos para ahorrar tiempo y aumentar tus ingresos.
           </p>
           <a
             href="#contacto"
-            className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg hover:bg-cyan-600 transition-all hover:shadow-xl font-semibold"
+            className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-xl"
           >
-            Agendar Consulta Gratuita
+            Agenda tu Consultoría Gratuita
           </a>
         </motion.div>
       </div>
