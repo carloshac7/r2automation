@@ -8,7 +8,7 @@ const useCases = [
     title: "Chatbot de Atención al Cliente",
     description: "Sistema de IA que responde preguntas frecuentes, agenda citas y califica leads automáticamente.",
     results: ["90% reducción en tiempo de respuesta", "Atención 24/7", "85% satisfacción del cliente"],
-    image: "/case-chatbot.jpg",
+    image: "/image/chatbot.svg",
     tags: ["Flowise", "WhatsApp", "OpenAI"],
   },
   {
