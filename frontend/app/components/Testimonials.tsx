@@ -11,7 +11,7 @@ const testimonials = [
     company: "TechStart",
     content: "Implementaron un chatbot con IA que maneja el 80% de nuestras consultas. Ahorramos 15 horas semanales y nuestros clientes están más satisfechos con la atención 24/7.",
     rating: 5,
-    image: "/testimonial-1.jpg",
+    image: "/images/testimonial-1.png",
   },
   {
     name: "María González",
@@ -19,7 +19,7 @@ const testimonials = [
     company: "InmoPlus",
     content: "La automatización de leads con Kommo transformó nuestro proceso de ventas. Ahora capturamos y calificamos leads automáticamente desde múltiples fuentes. Triplicamos nuestra conversión.",
     rating: 5,
-    image: "/testimonial-2.jpg",
+    image: "/images/testimonial-1.png",
   },
   {
     name: "Pedro Sánchez",
@@ -27,7 +27,7 @@ const testimonials = [
     company: "E-Commerce Pro",
     content: "El sistema de web scraping que desarrollaron nos permite monitorear precios de la competencia en tiempo real. Tomamos decisiones más rápidas y mantenemos ventaja competitiva.",
     rating: 5,
-    image: "/testimonial-3.jpg",
+    image: "/images/testimonial-1.png",
   },
   {
     name: "Ana Martínez",
@@ -35,7 +35,7 @@ const testimonials = [
     company: "Servicios Plus",
     content: "La integración con n8n nos permitió conectar todos nuestros sistemas. Ahora todo fluye automáticamente y tenemos visibilidad completa de nuestras operaciones.",
     rating: 5,
-    image: "/testimonial-1.jpg",
+    image: "/images/testimonial-1.png",
   },
   {
     name: "Luis Fernández",
@@ -43,7 +43,7 @@ const testimonials = [
     company: "LogiTech",
     content: "Las automatizaciones que implementaron redujeron nuestros tiempos de respuesta en un 70%. Ahora podemos enfocarnos en lo estratégico mientras el sistema maneja lo operativo.",
     rating: 5,
-    image: "/testimonial-2.jpg",
+    image: "/images/testimonial-1.png",
   },
 ];
 
