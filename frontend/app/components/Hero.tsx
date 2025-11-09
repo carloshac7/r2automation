@@ -7,43 +7,45 @@ export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-cyan-50 pt-20">
       <div className="container mx-auto px-6 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold mb-6 text-gray-900"
-        >
-          Automatiza tu mundo con flujos visuales
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-700"
-        >
-          Plataforma low-code para crear automatizaciones potentes, inspirada en n8n, Flowise y Voiceflow.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex gap-4 justify-center flex-wrap"
-        >
-          <a 
-            href="/signup" 
-            className="bg-cyan-500 text-white px-8 py-4 rounded-full text-lg hover:bg-cyan-600 transition-all hover:shadow-xl font-semibold"
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
           >
-            Empieza gratis
-          </a>
-          <a 
-            href="#demo" 
-            className="bg-white text-gray-900 px-8 py-4 rounded-full text-lg hover:bg-gray-100 transition-all border-2 border-gray-300 font-semibold"
+            Automatiza tu negocio con{" "}
+            <span className="text-cyan-500">Inteligencia Artificial</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
           >
-            Ver demo
-          </a>
-        </motion.div>
+            Desarrollamos soluciones personalizadas de automatización, chatbots inteligentes,
+            web scraping y APIs para optimizar tus procesos empresariales
+          </motion.p>
+        
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          >
+            <a
+              href="#contacto"
+              className="bg-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              Solicita una Demo
+            </a>
+            <a
+              href="#servicios"
+              className="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-all border-2 border-gray-200 hover:border-cyan-500"
+            >
+              Ver Servicios
+            </a>
+          </motion.div>
         
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -53,7 +55,7 @@ export function Hero() {
         >
           {/* TODO: Reemplazar con tu propia ilustración o imagen */}
           <Image 
-            src="/hero-illustration.webp" 
+            src="/images/logo.svg" 
             alt="Ilustración de flujo de automatización" 
             width={800} 
             height={600} 
