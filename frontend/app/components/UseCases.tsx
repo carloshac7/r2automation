@@ -15,7 +15,7 @@ const useCases = [
     title: "Automatización de Leads",
     description: "Captura automática de leads desde múltiples fuentes y gestión en Kommo CRM con seguimiento personalizado.",
     results: ["3x más leads calificados", "Integración con 5 plataformas", "Ahorro de 20 horas semanales"],
-    image: "/images/Leads_kommo.jpg",
+    image: "/images/Leads_kommo.svg",
     tags: ["Kommo", "n8n", "Web Scraping"],
   },
   {
