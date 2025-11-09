@@ -22,7 +22,7 @@ const useCases = [
     title: "Web Scraping de Competencia",
     description: "Monitoreo automatizado de precios y productos de la competencia con alertas en tiempo real.",
     results: ["Datos actualizados cada hora", "Dashboard personalizado", "Ventaja competitiva"],
-    image: "/images/websrap.svg",
+    image: "/images/webscrap.svg",
     tags: ["Python", "Streamlit", "Puppeteer"],
   },
 ];
