@@ -229,7 +229,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Ubicación</p>
-                    <p className="text-gray-600">Santiago, Chile</p>
+                    <p className="text-gray-600">Lima, Perú</p>
                     <p className="text-sm text-gray-500">Atendemos todo LATAM</p>
                   </div>
                 </div>
