@@ -17,7 +17,7 @@ export function Footer() {
               <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">R2</span>
               </div>
-              <span className="text-2xl font-bold text-white">R2Automate</span>
+              <span className="text-2xl font-bold text-white">Automate</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed max-w-md">
               Transformamos negocios con soluciones de automatización inteligente,
@@ -32,13 +32,13 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-cyan-400" />
-                <a href="https://wa.me/56912345678" className="hover:text-cyan-400 transition-colors">
-                  +56 9 1234 5678
+                <a href="https://wa.me/51912435778" className="hover:text-cyan-400 transition-colors">
+                  +51 9 1243 5778
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-cyan-400" />
-                <span>Santiago, Chile</span>
+                <span>Lima, Perú</span>
               </div>
             </div>
           </div>

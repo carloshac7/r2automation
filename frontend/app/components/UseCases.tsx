@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { AuroraGradient } from "./AuroraGradient";
 
 const useCases = [
   {
@@ -10,6 +11,7 @@ const useCases = [
     results: ["90% reducción en tiempo de respuesta", "Atención 24/7", "85% satisfacción del cliente"],
     image: "/images/chatbot.svg",
     tags: ["Flowise", "WhatsApp", "OpenAI"],
+    auroraColors: ['rgba(6, 182, 212, 0.2)', 'rgba(34, 211, 238, 0.15)']
   },
   {
     title: "Automatización de Leads",
@@ -17,6 +19,7 @@ const useCases = [
     results: ["3x más leads calificados", "Integración con 5 plataformas", "Ahorro de 20 horas semanales"],
     image: "/images/Leads_kommo.svg",
     tags: ["Kommo", "n8n", "Web Scraping"],
+    auroraColors: ['rgba(59, 130, 246, 0.2)', 'rgba(99, 102, 241, 0.15)']
   },
   {
     title: "Web Scraping de Competencia",
@@ -24,6 +27,7 @@ const useCases = [
     results: ["Datos actualizados cada hora", "Dashboard personalizado", "Ventaja competitiva"],
     image: "/images/webscrap.svg",
     tags: ["Python", "Streamlit", "Puppeteer"],
+    auroraColors: ['rgba(168, 85, 247, 0.2)', 'rgba(192, 132, 252, 0.15)']
   },
 ];
 
@@ -58,17 +62,27 @@ export function UseCases() {
                 index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
               } gap-8 items-center`}
             >
-              {/* Imagen */}
+              {/* Imagen con Aurora */}
               <div className="lg:w-1/2">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                  <Image
-                    src={useCase.image}
-                    alt={useCase.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto"
-                  />
-                </div>
+                <AuroraGradient
+                  className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white"
+                  colors={[
+                    ...useCase.auroraColors,
+                    'rgba(99, 102, 241, 0.1)'
+                  ]}
+                  opacity={0.9}
+                  blur={60}
+                >
+                  <div className="relative">
+                    <Image
+                      src={useCase.image}
+                      alt={useCase.title}
+                      width={600}
+                      height={400}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </AuroraGradient>
               </div>
 
               {/* Contenido */}
@@ -108,6 +122,7 @@ export function UseCases() {
           ))}
         </div>
 
+        {/* CTA con Aurora */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,12 +133,22 @@ export function UseCases() {
           <p className="text-gray-600 mb-6 text-lg">
             ¿Listo para transformar tu negocio?
           </p>
-          <a
-            href="#contacto"
-            className="inline-block bg-cyan-500 text-white px-8 py-4 rounded-full text-lg hover:bg-cyan-600 transition-all hover:shadow-xl font-semibold"
+          <AuroraGradient
+            className="inline-block rounded-full"
+            colors={[
+              'rgba(6, 182, 212, 0.3)',
+              'rgba(59, 130, 246, 0.3)',
+            ]}
+            opacity={0.9}
+            blur={60}
           >
-            Hablemos de tu proyecto
-          </a>
+            <a
+              href="#contacto"
+              className="block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg hover:shadow-2xl transition-all hover:scale-105 font-semibold"
+            >
+              Hablemos de tu proyecto
+            </a>
+          </AuroraGradient>
         </motion.div>
       </div>
     </section>

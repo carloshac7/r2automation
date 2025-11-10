@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Clock, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { useState } from "react";
 
 export function Contact() {
@@ -14,82 +14,17 @@ export function Contact() {
     message: ""
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
 
-  // URL del webhook desde variables de entorno
-  const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || "";
-
-  const handleSubmit = async () => {
-    // Validación básica
-    if (!formData.name || !formData.email || !formData.service || !formData.message) {
-      alert("Por favor completa todos los campos requeridos (*)");
-      return;
-    }
-
-    // Validar email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      alert("Por favor ingresa un email válido");
-      return;
-    }
-
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setStatus("sending");
-    setErrorMessage("");
-
-    try {
-      const response = await fetch(N8N_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
-          source: 'web',
-          userAgent: navigator.userAgent,
-          page: window.location.href
-        })
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        
-        // Limpiar formulario
-        setFormData({ 
-          name: "", 
-          email: "", 
-          phone: "", 
-          company: "", 
-          service: "", 
-          message: "" 
-        });
-
-        // Volver a idle después de 5 segundos
-        setTimeout(() => setStatus("idle"), 5000);
-
-        // Opcional: Tracking de conversión
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'form_submission', {
-            event_category: 'Contact',
-            event_label: 'Contact Form'
-          });
-        }
-
-      } else {
-        throw new Error(`Error del servidor: ${response.status}`);
-      }
-
-    } catch (error: any) {
-      console.error('Error enviando formulario:', error);
-      setStatus("error");
-      setErrorMessage(error.message || "Error al enviar el mensaje. Por favor intenta nuevamente.");
-      
-      // Volver a idle después de 5 segundos
-      setTimeout(() => {
-        setStatus("idle");
-        setErrorMessage("");
-      }, 5000);
-    }
+    
+    // Simulación de envío - Aquí integrarías con tu backend o servicio de email
+    setTimeout(() => {
+      setStatus("success");
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    }, 1500);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -125,7 +60,7 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -136,8 +71,8 @@ export function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    disabled={status === "sending"}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -150,8 +85,7 @@ export function Contact() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    disabled={status === "sending"}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
                     placeholder="Nombre de empresa"
                   />
                 </div>
@@ -167,8 +101,8 @@ export function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    disabled={status === "sending"}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -181,9 +115,8 @@ export function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    disabled={status === "sending"}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="+51 9 1243 5778"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all"
+                    placeholder="+51 912 435 778"
                   />
                 </div>
               </div>
@@ -196,8 +129,8 @@ export function Contact() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  disabled={status === "sending"}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all bg-white"
                 >
                   <option value="">Selecciona un servicio</option>
                   <option value="chatbot">Chatbot con IA</option>
@@ -220,28 +153,22 @@ export function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  disabled={status === "sending"}
+                  required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all resize-none disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="Cuéntanos sobre tu proyecto y qué necesitas automatizar..."
                 />
               </div>
 
               <button
-                onClick={handleSubmit}
+                type="submit"
                 disabled={status === "sending"}
                 className="w-full bg-cyan-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-cyan-600 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {status === "sending" && (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                )}
                 {status === "sending" ? (
                   "Enviando..."
                 ) : status === "success" ? (
-                  <>
-                    <CheckCircle className="w-5 h-5" />
-                    Enviado con Éxito
-                  </>
+                  "✓ Enviado con Éxito"
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
@@ -250,40 +177,12 @@ export function Contact() {
                 )}
               </button>
 
-              {/* Success Message */}
               {status === "success" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3"
-                >
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-green-800 font-semibold">¡Mensaje enviado correctamente!</p>
-                    <p className="text-green-700 text-sm mt-1">
-                      Nos pondremos en contacto contigo en menos de 24 horas.
-                    </p>
-                  </div>
-                </motion.div>
+                <p className="text-green-600 text-center font-semibold">
+                  ¡Gracias! Te responderemos en menos de 24 horas.
+                </p>
               )}
-
-              {/* Error Message */}
-              {status === "error" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3"
-                >
-                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-red-800 font-semibold">Error al enviar el mensaje</p>
-                    <p className="text-red-700 text-sm mt-1">
-                      {errorMessage || "Por favor intenta nuevamente o contáctanos por WhatsApp."}
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-            </div>
+            </form>
           </motion.div>
 
           {/* Contact Info */}
@@ -319,7 +218,7 @@ export function Contact() {
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">WhatsApp</p>
                     <a href="https://wa.me/51912435778" className="text-cyan-600 hover:text-cyan-700">
-                      +51 9 1243 5778
+                      +51 912 435 778
                     </a>
                   </div>
                 </div>
@@ -354,10 +253,10 @@ export function Contact() {
               </h3>
               <p className="mb-6 leading-relaxed">
                 Agenda una llamada de 30 minutos sin costo. Analizaremos tu caso y
-                te daremos una propuesta personalizada.
+                te daremos una propuesta personalizada con lo que necesites.
               </p>
               <a
-                href="https://calendly.com/r2automate"
+                href="https://calendar.app.google/f5atD5xruvegwAYm7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-white text-cyan-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"

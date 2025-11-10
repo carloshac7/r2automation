@@ -21,7 +21,7 @@ export function Header() {
           <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-xl">R2</span>
           </div>
-          <span className="text-xl font-bold text-gray-900">R2Automate</span>
+          <span className="text-xl font-bold text-gray-900">Automate</span>
         </Link>
 
         {/* Desktop Navigation */}
