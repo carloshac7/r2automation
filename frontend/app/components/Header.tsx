@@ -60,7 +60,21 @@ export function Header() {
           </li>
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center space-x-4">
+          {/* Kommo Partner Logo Button */}
+          <Link
+            href="https://www.kommo.com/es/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center hover:opacity-80 transition-opacity"
+          >
+            <img
+              src="/images/Badge_light.svg"
+              alt="Kommo Partner"
+              className="h-8 w-auto"
+            />
+          </Link>
+
           <Link
             href="#contacto"
             className="bg-cyan-500 text-white px-6 py-2.5 rounded-full hover:bg-cyan-600 transition-colors font-medium shadow-md hover:shadow-lg"
@@ -121,6 +135,21 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQ
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.kommo.com/es/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <img
+                  src="/images/Badge_light.svg"
+                  alt="Kommo Partner"
+                  className="h-9 w-auto"
+                />
               </Link>
             </li>
             <li>
